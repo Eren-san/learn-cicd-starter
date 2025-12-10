@@ -10,7 +10,7 @@ func TestGetAPIKey_Success(t *testing.T) {
     headers.Set("Authorization", "ApiKey 12345")
 
     got, err := GetAPIKey(headers)
-    want := ""
+    want := "12345"
 
     if err != nil {
         t.Fatalf("unexpected error: %v", err)
