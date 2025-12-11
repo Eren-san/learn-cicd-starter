@@ -25,11 +25,4 @@ jobs:
         run: go test -cover ./...
       
       - name: Style
-        run: |
-          fmt_output = $(go fmt ./...)
-          if[ -n "fmt_output"]; then
-          echo "Not formatted: "
-          echo "fmt_output"
-          exit 1
-        fi  
-
+        run: test -z $(go fmt ./...) 
