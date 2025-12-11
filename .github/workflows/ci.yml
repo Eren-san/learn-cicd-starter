@@ -39,10 +39,4 @@ jobs:
           go-version: "1.25.1"
 
       - name: Check formatting
-        run: |
-          fmt_output=$(go fmt ./...)
-          if [ -n "$fmt_output" ]; then
-            echo "Go files not formatted:"
-            echo "$fmt_output"
-            exit 1
-          fi
+        run: test -z "$(go fmt ./...)"
