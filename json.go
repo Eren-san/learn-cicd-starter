@@ -30,5 +30,9 @@ func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 		return
 	}
 	w.WriteHeader(code)
-	w.Write(dat)
+
+	// G104 Düzeltmesi: w.Write() hatası kontrol ediliyor
+	if _, err := w.Write(dat); err != nil {
+		log.Printf("%v", err)
+	}
 }
