@@ -25,4 +25,10 @@ jobs:
         run: go test -cover ./...
       
       - name: Style
-        run: test -z $(go fmt ./...) 
+        run: | 
+          fmt_output=$(go fmt ./...)
+          if [ -n "$fmt_output" ]; then
+           echo "Go files not formatted:"
+           echo "$fmt_output"
+           exit 1
+          fi 
